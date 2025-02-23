@@ -83,3 +83,25 @@
     color: #7a918a;
   }
   
+  /* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide links on small screens */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -36,10 +36,9 @@ const Home = () => {
           <p>
             <em>Meditation means observing your nature, inhaling... existing... of your breath...</em>
           </p>
-          {/* <a href="#explore" className="btn primary">Explore More</a> */}
         </div>
       </div>
-      <div className="home-section">
+      {/* <div className="home-section">
         <div className="section-title">
           <h2>Discover Our Journey</h2>
         </div>
@@ -55,36 +54,17 @@ const Home = () => {
       <div className="home-resources">
         <h2>Explore Our Resources</h2>
         <p>Access articles, videos, and tools for growth</p>
-      </div>
+      </div> */}
       <div className="home-cards-container">
-        <div className="home-card">
-          <img src={cardImage1} alt="Card 1" />
-          <div className="home-card-content">
-            <h3>Cultivating Mindfulness in Daily Life</h3>
-            <p>Learn practical techniques to cultivate mindfulness and integrate it into your daily routine for enhanced well-being.</p>
+        {[cardImage1, cardImage2, cardImage3, cardImage4].map((img, index) => (
+          <div className="home-card" key={index}>
+            <img src={img} alt={`Card ${index + 1}`} />
+            <div className="home-card-content">
+              <h3>{["Cultivating Mindfulness in Daily Life", "Inner Engineering: A Path to Self-Transformation", "The Importance of Yoga in Modern Life", "Finding Inner Peace Through Meditation"][index]}</h3>
+              <p>{["Learn practical techniques to cultivate mindfulness and integrate it into your daily routine for enhanced well-being.", "Discover the transformative potential of Inner Engineering, a program designed to unlock your inner potential.", "Explore the multifaceted benefits of yoga, from physical health to mental well-being, and how it enriches daily life.", "Discover the transformative power of meditation and how it can lead to a more peaceful and fulfilling life."][index]}</p>
+            </div>
           </div>
-        </div>
-        <div className="home-card">
-          <img src={cardImage2} alt="Card 2" />
-          <div className="home-card-content">
-            <h3>Inner Engineering: A Path to Self-Transformation</h3>
-            <p>Discover the transformative potential of Inner Engineering, a program designed to unlock your inner potential.</p>
-          </div>
-        </div>
-        <div className="home-card">
-          <img src={cardImage3} alt="Card 3" />
-          <div className="home-card-content">
-            <h3>The Importance of Yoga in Modern Life</h3>
-            <p>Explore the multifaceted benefits of yoga, from physical health to mental well-being, and how it enriches daily life.</p>
-          </div>
-        </div>
-        <div className="home-card">
-          <img src={cardImage4} alt="Card 4" />
-          <div className="home-card-content">
-            <h3>Finding Inner Peace Through Meditation</h3>
-            <p>Discover the transformative power of meditation and how it can lead to a more peaceful and fulfilling life.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
