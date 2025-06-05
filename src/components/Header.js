@@ -1,30 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logoImage from "../assets/AHAM.jpg";
-import "./Header.css"; // Import external CSS file
+import "./Header.css";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav className="navbar">
-      {/* Left Side - Brand Name */}
-      <Link to="/"> {/* Wrap the logo inside a Link component */}
-        <img src={logoImage} alt="Logo" className="navbar-logo" />
-      </Link>
-      <div className="navbar-brand">AHAM BRAHMASMI FOUNDATION</div>
+    <div className="header-card">
+      <nav className="navbar">
+        <div className="navbar-left">
+          <Link to="/">
+            <img src={logoImage} alt="Logo" className="navbar-logo" />
+          </Link>
+          <div className="navbar-brand">AHAM BRAHMASMI FOUNDATION</div>
+        </div>
 
-      {/* Center - Navigation Links */}
-      <ul className="nav-links">
-        <li><a href="#about">About Us</a></li>
-        <li><Link to="/program">Program</Link></li> {/* Updated Link */}
-        <li><a href="#resource">Resource</a></li>
-      </ul>
+        <div className="dots-menu" onClick={toggleMenu}>
+          &#8942;
+        </div>
 
-      {/* Right Side - Buttons
-      <div className="nav-buttons">
-        <a href="#join" className="btn primary">Join Us</a>
-        <a href="#learn" className="btn secondary">Learn More</a>
-      </div> */}
-    </nav>
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+  <li><Link to="/AboutUs" onClick={() => setMenuOpen(false)}>AboutUs</Link></li>
+  <li><Link to="/program" onClick={() => setMenuOpen(false)}>Program</Link></li>
+  {/* <li><a href="#resource" onClick={() => setMenuOpen(false)}>Resource</a></li> */}
+  <li><Link to="/ContactUs" onClick={() => setMenuOpen(false)}>Contact US</Link></li>
+</ul>
+      </nav>
+    </div>
   );
 };
 
