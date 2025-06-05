@@ -1,90 +1,134 @@
 import React from "react";
-import "./Home.css";
 import yogaImage from "../assets/yoga-1.jpg";
-import journeyImage from "../assets/yoga-img.webp";
+// import journeyImage from "../assets/yoga-img.webp";
 import cardImage1 from "../assets/card-img1.webp";
 import cardImage2 from "../assets/card-img2.webp";
 import cardImage3 from "../assets/card-img3.webp";
 import cardImage4 from "../assets/card-img4.webp";
 
 const Home = () => {
-  return (
-    <div className="home-wrapper">
-      <div className="home-container">
-        <div className="home-image">
-          <img src={yogaImage} alt="Yoga Practice" />
-        </div>
-        <div className="home-content">
-          <h2>SATCHITANANDA SADHGURU SANJAIJI</h2>
+  const contentData = [
+    {
+      img: yogaImage,
+      heading: "SATCHITANANDA SADHGURU SANJAIJI",
+      content: (
+        <>
           <p>
             <strong>Sanjai</strong> was born in the year 1973 in Trichy district, Tamil Nadu, India,
             to Venkatesan and Mohana.
           </p>
           <p>
             Sanjai became enlightened in the year 2008 after some serious experiments
-            and experiences with meditation. Since then, Sanjaiji has been striving
-            hard to awaken and enlighten each and every individual. This journey began
-            in 2009 in schools, temples, and towns of Pondicherry and Trichy, and expanded
-            online throughout the world in June 2020.
+            and experiences with meditation...
           </p>
           <p>
-            All the Yogi Bava's gathered and conferred the title of <strong>SADHGURU SANJAIJI</strong>
-            on <strong>24th December 2024</strong> and <strong>SATCHITANANDA SADHGURU SANJAIJI</strong>
-            on <strong>1st January 2025</strong>, with the blessings of Sadhpurush
-            Pitamaha Brahmarshi Subhash Patriji.
+            All the Yogi Bava's gathered and conferred the title of <strong>SADHGURU SANJAIJI</strong>...
           </p>
           <p>
             <em>Meditation means observing your nature, inhaling... existing... of your breath...</em>
           </p>
-          {/* <a href="#explore" className="btn primary">Explore More</a> */}
+        </>
+      ),
+    },
+    // {
+    //   img: journeyImage,
+    //   heading: "Discover Our Journey",
+    //   content: (
+    //     <p>
+    //       At Isha Foundation, we believe in the power of holistic well-being...
+    //     </p>
+    //   ),
+    // },
+  ];
+
+  const cardImages = [cardImage1, cardImage2, cardImage3, cardImage4];
+  const cardTitles = [
+    "Cultivating Mindfulness in Daily Life",
+    "Inner Engineering: A Path to Self-Transformation",
+    "The Importance of Yoga in Modern Life",
+    "Finding Inner Peace Through Meditation",
+  ];
+  const cardTexts = [
+    "Learn practical techniques to cultivate mindfulness...",
+    "Discover the transformative potential of Inner Engineering...",
+    "Explore the multifaceted benefits of yoga...",
+    "Discover the transformative power of meditation...",
+  ];
+
+  return (
+    <div style={{ width: "100%", padding: "20px", boxSizing: "border-box" }}>
+      {contentData.map((item, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "40px",
+            marginTop:"70px",
+          }}
+        >
+          <img
+            src={item.img}
+            alt={`Image ${index + 1}`}
+            style={{
+              width: "100%",
+              maxWidth: "500px",
+              height: "auto",
+              borderRadius: "12px",
+              margin: "10px",
+            }}
+          />
+          <div
+            style={{
+              flex: "1",
+              maxWidth: "500px",
+              padding: "10px",
+              textAlign: "justify",
+            }}
+          >
+            <h2>{item.heading}</h2>
+            {item.content}
+          </div>
         </div>
-      </div>
-      <div className="home-section">
-        <div className="section-title">
-          <h2>Discover Our Journey</h2>
-        </div>
-        <div className="section-content">
-          <p>
-            At Isha Foundation, we believe in the power of holistic well-being. Founded by Sadhguru Jaggi Vasudev, our mission is to empower individuals through transformative programs in yoga, meditation, and personal growth.
-          </p>
-        </div>
-      </div>
-      <div className="home-additional-image">
-        <img src={journeyImage} alt="Our Journey" />
-      </div>
-      <div className="home-resources">
+      ))}
+
+      <div style={{ textAlign: "center", margin: "40px 0" }}>
         <h2>Explore Our Resources</h2>
         <p>Access articles, videos, and tools for growth</p>
       </div>
-      <div className="home-cards-container">
-        <div className="home-card">
-          <img src={cardImage1} alt="Card 1" />
-          <div className="home-card-content">
-            <h3>Cultivating Mindfulness in Daily Life</h3>
-            <p>Learn practical techniques to cultivate mindfulness and integrate it into your daily routine for enhanced well-being.</p>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {cardImages.map((img, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+              backgroundColor: "#fff",
+            }}
+          >
+            <img
+              src={img}
+              alt={`Card ${index + 1}`}
+              style={{ width: "100%", height: "200px", objectFit: "cover" }}
+            />
+            <div style={{ padding: "16px" }}>
+              <h3>{cardTitles[index]}</h3>
+              <p>{cardTexts[index]}</p>
+            </div>
           </div>
-        </div>
-        <div className="home-card">
-          <img src={cardImage2} alt="Card 2" />
-          <div className="home-card-content">
-            <h3>Inner Engineering: A Path to Self-Transformation</h3>
-            <p>Discover the transformative potential of Inner Engineering, a program designed to unlock your inner potential.</p>
-          </div>
-        </div>
-        <div className="home-card">
-          <img src={cardImage3} alt="Card 3" />
-          <div className="home-card-content">
-            <h3>The Importance of Yoga in Modern Life</h3>
-            <p>Explore the multifaceted benefits of yoga, from physical health to mental well-being, and how it enriches daily life.</p>
-          </div>
-        </div>
-        <div className="home-card">
-          <img src={cardImage4} alt="Card 4" />
-          <div className="home-card-content">
-            <h3>Finding Inner Peace Through Meditation</h3>
-            <p>Discover the transformative power of meditation and how it can lead to a more peaceful and fulfilling life.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
